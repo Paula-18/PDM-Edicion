@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 82
+        return 120
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,7 +35,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let contactoSeleccionado = contactos[tvContactos.indexPathForSelectedRow!.row]
+    }
+    
   
+    @IBOutlet weak var tvContactos: UITableView!
     var contactos : [Contacto] = []
     
     override func viewDidLoad() {
