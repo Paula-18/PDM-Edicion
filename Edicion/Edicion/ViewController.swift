@@ -37,6 +37,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let contactoSeleccionado = contactos[tvContactos.indexPathForSelectedRow!.row]
+        let destino = segue.destination as! EditarContactoController
+        destino.contacto = contactoSeleccionado
+        destino.callbackActualizarTVContactos = actualizarTVContactos
     }
     
   
@@ -51,7 +54,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         contactos.append(Contacto(nombre: "Ana", celular: "6442059823", correo: "ana03@gmail.com"))
         
     }
-
-
+    
+    func actualizarTVContactos() {
+        tvContactos.reloadData()
+    }
+    
 }
 
